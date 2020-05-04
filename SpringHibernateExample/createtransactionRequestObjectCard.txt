@@ -1,0 +1,20 @@
+ {
+ 	"body":
+ 	{
+ 		  "transtype" : "purchase",
+		  "paymenttype" : "Card",
+		  "currencycode" : "INR",
+		   "items":
+		  			[{
+						"name" : "Oil",
+						"qty" : 10,
+						"unitprice" : 120
+					}],
+		  	"custdetail":
+		  			{
+		  				"customerId" : 1,
+		  				"customerName" : "HussainY"
+		  			}
+		  
+ 	}
+}

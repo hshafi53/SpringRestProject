@@ -1,0 +1,15 @@
+ {
+ 	"body":
+ 	{
+ 		  "sender_name" : "HussainY",
+		  "sender_accountno" : 10547856,
+		  "sender_accounttype" : "Saving",
+		  "sender_ifsc" : "SBIN0005253",
+		  "beneficiary_name" : "Abaas",
+		  "beneficiary_accountno" :10876453,
+		  "beneficiary_accounttype" : "Current",
+		  "beneficiary_ifsc" : "SBIN0005152",
+		  "amount" : 100
+		  
+ 	}
+}

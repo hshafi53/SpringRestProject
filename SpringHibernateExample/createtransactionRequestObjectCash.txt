@@ -1,0 +1,20 @@
+ {
+ 	"body":
+ 	{
+ 		  "transtype" : "purchase",
+		  "paymenttype" : "cash",
+		  "currencycode" : "INR",
+		   "items":
+		  			[{
+						"name" : "Vegetables",
+						"qty" : 2,
+						"unitprice" : 100
+					}],
+		  	"custdetail":
+		  			{
+		  				"customerId" : 1,
+		  				"customerName" : "HussainY"
+		  			}
+		  
+ 	}
+}
