@@ -1,11 +1,7 @@
 package com.websystique.springmvc.dao;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -24,14 +20,11 @@ import com.apg.v2.api.transaction.model.TransactionPayment;
 import com.apg.v2.api.transaction.model.TransactionUser;*/
 
 @Repository("transactionRepository")
-public interface TransactionRepository
-		extends  JpaRepository<TransactionPayment, Long>  {
+public interface TransactionRepository extends JpaRepository<TransactionPayment, Long> {
 
 	@Query("Select t from Transaction t where t.transactionRefId = :transactionId")
 	public Transaction getTransactionByTransactionRefId(@Param("transactionId") String transactionId);
 
-	
-	
 	/*
 	 * @Query("Select t from Transaction t where t.partnerRefno = :partnerRefNo")
 	 * public Transaction isPartnerRefNoExist(@Param("partnerRefNo") String
@@ -57,7 +50,8 @@ public interface TransactionRepository
 	public Transaction getTransactionByTransactionRefId(@Param("transactionId") Long transactionId);
 
 	@Query("Select t from Transaction t where t.transactionRefId = :transactionRefId")
-	public com.websystique.springmvc.model.Transaction getTransactionByTransactionId(@Param("transactionRefId") Long transactionRefId);
+	public com.websystique.springmvc.model.Transaction getTransactionByTransactionId(
+			@Param("transactionRefId") Long transactionRefId);
 
 	/*
 	 * @Query("Select t from Transaction t where t.transactionRefId = :transactionId AND t.partnerKey = :partnerkey"

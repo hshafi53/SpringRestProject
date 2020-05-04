@@ -65,7 +65,7 @@ public class Transaction {
 
 	@Column(name = "transactionrefid")
 	private Long transactionRefId;
-	
+
 	@Column(name = "Balance")
 	private Long balance;
 

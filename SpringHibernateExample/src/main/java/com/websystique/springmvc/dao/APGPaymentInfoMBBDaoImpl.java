@@ -37,13 +37,13 @@ public class APGPaymentInfoMBBDaoImpl implements PaymentInfoMBBDao {
 	}
 
 	// @Transactional
-	public Long getCustomerByPIN(Long pin) {
+	public Long getCustomerByPIN(Long pin, Long cid) {
 		Long DBPin = 0L;
 		try {
 			System.out.println("Pin from user in side DAO================" + pin);
 			Session session = sessionFactory.getCurrentSession();
-			Query query = session.createQuery("from APGPaymentInfoMbb where pin= :pin");
-			query.setLong("pin", pin);
+			Query query = session.createQuery("from APGPaymentInfoMbb where customerId= :cid");
+			query.setLong("cid", cid);
 			APGPaymentInfoMbb p = (APGPaymentInfoMbb) query.uniqueResult();
 
 			DBPin = p.getPin();
@@ -74,6 +74,36 @@ public class APGPaymentInfoMBBDaoImpl implements PaymentInfoMBBDao {
 		APGPaymentInfoMbb p = (APGPaymentInfoMbb) query.uniqueResult();
 
 		return p;
+	}
+
+	public void saveUserPinStatus(Long cid, String status) {
+		System.out.println("inside saveUserPinStatus method");
+		Session session = sessionFactory.getCurrentSession();
+
+		Query query = session
+				.createQuery("update APGPaymentInfoMbb set UserPin = :status" + " " + " where customer_id = :cid");
+		query.setParameter("status", status);
+		query.setParameter("cid", cid);
+		int result = query.executeUpdate();
+		System.out.println("result after PIN status updated" + result);
+		if (result == 1) {
+			System.out.println("PIN status updated");
+		} else {
+			System.out.println("PIN status not updated");
+
+		}
+
+	}
+
+	public String getPinStatusByCid(Long cid) {
+
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from APGPaymentInfoMbb where customer_id= :cid");
+		query.setParameter("cid", cid);
+		APGPaymentInfoMbb p = (APGPaymentInfoMbb) query.uniqueResult();
+		String status = p.getUserpin();
+		return status;
+
 	}
 
 	@Override

@@ -8,7 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.Map;
 
 import javax.xml.datatype.DatatypeConstants;
@@ -75,7 +74,7 @@ public class GenerateTxnDtls {
 
 		if (file.createNewFile()) {
 
-			System.out.println("File is created!"+file.getName());
+			System.out.println("File is created!" + file.getName());
 
 		} else {
 			System.out.println("File already exists.");

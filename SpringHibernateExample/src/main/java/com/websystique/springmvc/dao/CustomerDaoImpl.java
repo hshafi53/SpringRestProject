@@ -56,7 +56,7 @@ public class CustomerDaoImpl {
 			System.out.println("Balance not updated");
 
 		}
-		
+
 	}
 
 	public void updateDebitNEFTBal(Long debitBal, String sendername) {
@@ -82,8 +82,8 @@ public class CustomerDaoImpl {
 		System.out.println("inside updatecreditNEFTBal method");
 		Session session = sessionFactory.getCurrentSession();
 
-		Query query = session
-				.createQuery("update TransactionUser set amount = :creditBal" + " " + " where customername = :benename");
+		Query query = session.createQuery(
+				"update TransactionUser set amount = :creditBal" + " " + " where customername = :benename");
 		query.setParameter("creditBal", creditBal);
 		query.setParameter("benename", benename);
 		int result = query.executeUpdate();

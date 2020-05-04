@@ -17,12 +17,12 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableTransactionManagement
 @EnableWebMvc
 @ComponentScan(basePackages = "com.websystique.springmvc")
-public class AppConfig extends WebMvcConfigurerAdapter{
+public class AppConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("home");
-    }
-	
+		registry.addViewController("/").setViewName("home");
+	}
+
 	@Bean
 	public ViewResolver viewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -32,12 +32,11 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 
 		return viewResolver;
 	}
-	
+
 	@Bean
 	public MessageSource messageSource() {
-	    ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-	    messageSource.setBasename("messages");
-	    return messageSource;
+		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+		messageSource.setBasename("messages");
+		return messageSource;
 	}
 }
-

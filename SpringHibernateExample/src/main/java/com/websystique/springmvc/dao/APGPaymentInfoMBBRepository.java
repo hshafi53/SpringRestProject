@@ -7,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 
 import com.websystique.springmvc.model.APGPaymentInfoMbb;
 
-
 public interface APGPaymentInfoMBBRepository
 		extends JpaRepository<com.websystique.springmvc.model.APGPaymentInfoMbb, Long> {
 
@@ -22,7 +21,7 @@ public interface APGPaymentInfoMBBRepository
 
 	@Query("SELECT p from APGPaymentInfoMbb p where p.paymentId=:paymentId")
 	APGPaymentInfoMbb findByPaymentId(@Param("paymentId") Long paymentid);
-	
+
 	@Modifying
 	@Query("DELETE from APGPaymentInfoMbb where paymentID=:paymentID")
 	void deleteByPaymentId(@Param("paymentID") Long paymentID);

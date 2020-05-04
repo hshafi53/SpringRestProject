@@ -51,14 +51,13 @@ public class HibernateConfiguration {
 		properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
 		properties.put("hibernate.c3p0.min_size", environment.getRequiredProperty("hibernate.c3p0.min_size"));
 		properties.put("hibernate.c3p0.max_size", environment.getRequiredProperty("hibernate.c3p0.max_size"));
-		properties.put("hibernate.c3p0.acquire_increment", environment.getRequiredProperty("hibernate.c3p0.acquire_increment"));
-		properties.put("hibernate.c3p0.acquire_increment", environment.getRequiredProperty("hibernate.c3p0.acquire_increment"));
-		properties.put("hibernate.c3p0.max_statements", environment.getRequiredProperty("hibernate.c3p0.max_statements"));
+		properties.put("hibernate.c3p0.acquire_increment",
+				environment.getRequiredProperty("hibernate.c3p0.acquire_increment"));
+		properties.put("hibernate.c3p0.acquire_increment",
+				environment.getRequiredProperty("hibernate.c3p0.acquire_increment"));
+		properties.put("hibernate.c3p0.max_statements",
+				environment.getRequiredProperty("hibernate.c3p0.max_statements"));
 
-
-		
-		
-		
 		return properties;
 	}
 

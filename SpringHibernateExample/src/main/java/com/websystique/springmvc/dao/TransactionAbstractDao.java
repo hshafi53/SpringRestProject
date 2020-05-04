@@ -13,7 +13,7 @@ import com.websystique.springmvc.model.Transaction;
 import com.websystique.springmvc.model.TransactionPayment;
 import com.websystique.springmvc.model.TransactionUser;
 
-public abstract class TransactionAbstractDao<PK extends Serializable, T>  {
+public abstract class TransactionAbstractDao<PK extends Serializable, T> {
 
 	private final Class<T> persistentClass;
 
@@ -25,7 +25,6 @@ public abstract class TransactionAbstractDao<PK extends Serializable, T>  {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
 
 	protected Session getSession() {
 		return sessionFactory.getCurrentSession();
@@ -35,18 +34,19 @@ public abstract class TransactionAbstractDao<PK extends Serializable, T>  {
 	public Transaction getByKey(Long transactionId) {
 		return (Transaction) getSession().get(persistentClass, transactionId);
 	}
-	
+
 	public TransactionUser getCustByKey(Long transactionId) {
 		return (TransactionUser) getSession().get(persistentClass, transactionId);
 	}
-	
+
 	public void persist(T entity) {
 		getSession().persist(entity);
 	}
+
 	public void persistpayment(TransactionPayment transactiondetails) {
 		getSession().persist(transactiondetails);
 	}
-	
+
 	public void persistNEFTpayment(NEFTDetails transactiondetails) {
 		getSession().persist(transactiondetails);
 	}

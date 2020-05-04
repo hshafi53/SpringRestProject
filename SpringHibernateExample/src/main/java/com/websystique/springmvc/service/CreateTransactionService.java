@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -57,98 +56,6 @@ import com.websystique.springmvc.dao.APGPaymentInfoMBBDaoImpl;
 import com.websystique.springmvc.dao.CustomerDaoImpl;
 import com.websystique.springmvc.model.APGPaymentInfoMbb;
 import com.websystique.springmvc.model.Transaction;
-
-/*import com.apg.v2.api.admin.dao.CSCEmailTemplateSettingsDao;
-import com.apg.v2.api.admin.dao.ChannelDao;
-import com.apg.v2.api.admin.dao.PartnerDao;
-import com.apg.v2.api.admin.model.APGCSCEmailTemplateSettings;
-import com.apg.v2.api.admin.model.APGChannel;
-import com.apg.v2.api.admin.model.APGPartner;
-import com.apg.v2.api.common.constants.CommonConstants;
-import com.apg.v2.api.common.dto.request.AdditionalCharges;
-import com.apg.v2.api.common.dto.request.CCDetailBody;
-import com.apg.v2.api.common.dto.request.CancelRecurringTransactionRequestDto;
-import com.apg.v2.api.common.dto.request.CancelRequestDto;
-import com.apg.v2.api.common.dto.request.CardBlackListRequestDto;
-import com.apg.v2.api.common.dto.request.CreateTransactionRequestDto;
-import com.apg.v2.api.common.dto.request.EppInfo;
-import com.apg.v2.api.common.dto.request.EwalletCancelRequestDto;
-import com.apg.v2.api.common.dto.request.ExtraData;
-import com.apg.v2.api.common.dto.request.GetTransactionPaymentDetailsRequestDto;
-import com.apg.v2.api.common.dto.request.GetTransactionResultRequestDto;
-import com.apg.v2.api.common.dto.request.InitPaymentDto;
-import com.apg.v2.api.common.dto.request.ItemDesc;
-import com.apg.v2.api.common.dto.request.PaymentDetailsBody;
-import com.apg.v2.api.common.dto.request.RecurringRequestListDto;
-import com.apg.v2.api.common.dto.request.RecurringScedularRequestBody;
-import com.apg.v2.api.common.dto.request.RecurringScedularRequestDto;
-import com.apg.v2.api.common.dto.request.RefundDetail;
-import com.apg.v2.api.common.dto.request.SignInfo;
-import com.apg.v2.api.common.dto.request.SignInfoResponse;
-import com.apg.v2.api.common.dto.request.SubmitTransactionRequestDto;
-import com.apg.v2.api.common.dto.request.ValidateSSOTicketRequestBody;
-import com.apg.v2.api.common.dto.request.ValidateSSOTicketRequestDto;
-import com.apg.v2.api.common.dto.response.BankPaymentPageResponseDto;
-import com.apg.v2.api.common.dto.response.CCdetail;
-import com.apg.v2.api.common.dto.response.CancelRecurringInternalResponseDto;
-import com.apg.v2.api.common.dto.response.CreateTransactionResponseDto;
-import com.apg.v2.api.common.dto.response.CustomerInfo;
-import com.apg.v2.api.common.dto.response.DeleteTransactionResponseDto;
-import com.apg.v2.api.common.dto.response.GetTransactionPaymentDetailsResponseBody;
-import com.apg.v2.api.common.dto.response.GetTransactionPaymentDetailsResponseDto;
-import com.apg.v2.api.common.dto.response.GetTransactionResultResponseBody;
-import com.apg.v2.api.common.dto.response.GetTransactionResultResponseDto;
-import com.apg.v2.api.common.dto.response.MerchantBankResponseDto;
-import com.apg.v2.api.common.dto.response.PaymentDetails;
-import com.apg.v2.api.common.dto.response.ValidationResponseDto;
-import com.apg.v2.api.constants.ApplicationConstants;
-import com.apg.v2.api.enums.BlacklistRuleEnums.BlacklistRule;
-import com.apg.v2.api.enums.RecurringTransactionEnums.RecurringTransactionStatus;
-import com.apg.v2.api.enums.TransactionEnums;
-import com.apg.v2.api.enums.TransactionEnums.TransactionStatus;
-import com.apg.v2.api.enums.TransactionPaymentEnums.TransactionPaymentStatus;
-import com.apg.v2.api.enums.ValidationEnums.TransactionValidationCodes;
-import com.apg.v2.api.logger.LoggerAOP;
-import com.apg.v2.api.mapper.MiscDataMapper;
-import com.apg.v2.api.mapper.TransactionMapper;
-import com.apg.v2.api.mapper.TransactionResponseMapper;
-import com.apg.v2.api.request.dto.TransactionLogDto;
-import com.apg.v2.api.response.dto.ChannelExistDto;
-import com.apg.v2.api.response.dto.PartnerExistDto;
-import com.apg.v2.api.response.dto.PaymentProviderExistDto;
-import com.apg.v2.api.response.dto.ValidateSSOResponseDto;
-import com.apg.v2.api.service.ICreateTransactionService;
-import com.apg.v2.api.service.PaymentProviderService;
-import com.apg.v2.api.service.SubmitMessageService;
-import com.apg.v2.api.service.ValidationService;
-import com.apg.v2.api.transaction.dao.EwalletTransactionDao;
-import com.apg.v2.api.transaction.dao.MiscDataDao;
-import com.apg.v2.api.transaction.dao.PaymentInfoCTBDao;
-import com.apg.v2.api.transaction.dao.PaymentInfoMBBDao;
-import com.apg.v2.api.transaction.dao.PaymentInfoPBBDao;
-import com.apg.v2.api.transaction.dao.TransactionDao;
-import com.apg.v2.api.transaction.dao.TransactionPaymentDao;
-import com.apg.v2.api.transaction.model.APGAdditionalCharges;
-import com.apg.v2.api.transaction.model.APGPaymentInfoCTB;
-import com.apg.v2.api.transaction.model.APGPaymentInfoMbb;
-import com.apg.v2.api.transaction.model.APGPaymentInfoPBB;
-import com.apg.v2.api.transaction.model.APGRecurring;
-import com.apg.v2.api.transaction.model.APGTransactionEppInfo;
-import com.apg.v2.api.transaction.model.EwalletTransactionDetails;
-import com.apg.v2.api.transaction.model.MiscData;
-import com.apg.v2.api.transaction.model.Transaction;
-import com.apg.v2.api.transaction.model.TransactionItem;
-import com.apg.v2.api.transaction.model.TransactionPayment;
-import com.apg.v2.api.transaction.model.TransactionPaymentRefund;
-import com.apg.v2.api.util.AESEncryptionDecryptionUrl;
-import com.apg.v2.api.util.APGAPIPropertyUtils;
-import com.apg.v2.api.util.APGSchedulerUtils;
-import com.apg.v2.api.util.APGUtils;
-import com.apg.v2.api.util.ErrorUtil;
-import com.apg.v2.api.util.GenericUtil;
-import com.apg.v2.api.util.LoggerConstants;
-import com.apg.v2.api.util.SignatureUtil;
-import com.fasterxml.jackson.databind.ObjectMapper;*/
 
 @Service
 
@@ -205,26 +112,19 @@ public class CreateTransactionService implements ICreateTransactionService {
 	public com.response.dto.CreateTransactionResponseDto createTransaction(
 			com.request.dto.CreateTransactionRequestDto createTransaction) {
 
-		/*
-		 * HttpServletRequest request = ((ServletRequestAttributes)
-		 * RequestContextHolder.currentRequestAttributes()) .getRequest();
-		 */
 		com.response.dto.ValidationResponseDto validationResponse = null;
 		com.response.dto.CreateTransactionResponseDto createTransactionResponse = null;
-		boolean isCreateTransaction = false;
 
 		validationResponse = validationService.validateCreateTransaction(createTransaction);
-		// }
 
 		try {
 
-			// status code 01 is validation success need to check for unique
-			// partnerref number
+			// status code 01 is validation success
 			if (validationResponse.getCode() == 01) {
 
 				try {
 					if (createTransaction != null) {
-						System.out.println("createTransaction" + createTransaction);
+						System.out.println("request is==========" + createTransaction);
 						// Saving the Transaction
 
 						Long transactionRefId = getRandomNumber();
@@ -241,14 +141,13 @@ public class CreateTransactionService implements ICreateTransactionService {
 							String ccdisplay = paymentInfoMBBDao.getMbbPaymentInfoByCustomerId(
 									createTransaction.getCreateTransactionBody().getCustomerDetail().getCustomerId());
 							System.out.println("Card is-----------" + ccdisplay);
+							Long custid = createTransaction.getCreateTransactionBody().getCustomerDetail()
+									.getCustomerId();
 
-							/*
-							 * String url =
-							 * "http://localhost:8080/SpringHibernateExample/getCardDetails/Mxx1234567";
-							 */
 							String api_host = "http://localhost:8080/SpringHibernateExample/";
 							String commoncont = "getCardDetails/";
-							String url = api_host + commoncont + ccdisplay;
+							String url = api_host + commoncont + ccdisplay + custid;
+							System.out.println("URL =========================" + url);
 							HttpEntity<String> entity = new HttpEntity<>(ccdisplay);
 							RestTemplate rest = new RestTemplate();
 							ResponseEntity<String> validationtransResponse = rest.exchange(url, HttpMethod.GET, entity,
@@ -263,16 +162,26 @@ public class CreateTransactionService implements ICreateTransactionService {
 							messageConverters.add(converter);
 							rest.setMessageConverters(messageConverters);
 
-							TimeUnit.SECONDS.sleep(15);
+							TimeUnit.SECONDS.sleep(30);
 							// This method is used to consume transactioncancel API for Invalid PIN
-							// isCreateTransaction = checkDBPinvalidation(false);
+							String getfinalstatus = checkDBPinvalidation(false, custid);
 
+							String validation = "Pin invalid and transaction cancelled";
 							TimeUnit.SECONDS.sleep(30);
 							System.out.println(
-									"response from checkDBPinvalidation=====================" + isCreateTransaction);
+									"response from checkDBPinvalidation=====================" + getfinalstatus);
+							if (getfinalstatus.equalsIgnoreCase(validation)) {
+								System.out.println("inside pin validation failure condition===============");
+								validationResponse = validationService.validateUserPin(getfinalstatus);
+								System.out
+										.println("validationResponse inside validation failure condition==============="
+												+ validationResponse.getMessage());
 
-							System.out.println(
-									"pin successfully validated from ValidateCCPin API in transaction process");
+								return createTransactionResponse = com.websystique.springmvc.configuration.TransactionResponseMapper
+										.createPINInvalidErrorResponseMapper(validationResponse);
+							} else
+								System.out.println(
+										"pin successfully validated from ValidateCCPin API in transaction process");
 
 						}
 
@@ -395,10 +304,6 @@ public class CreateTransactionService implements ICreateTransactionService {
 
 		try {
 
-			// status code 01 is validation success need to check for unique
-			// partnerref number
-			// if (validationResponse.getCode() == 01) {
-
 			try {
 				if (transaction != null) {
 					System.out.println("transaction from transaction API" + transaction);
@@ -434,12 +339,7 @@ public class CreateTransactionService implements ICreateTransactionService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			/*
-			 * } else { // Status Code is not 01 then check for other status codes sent
-			 * createTransactionResponse =
-			 * com.websystique.springmvc.configuration.TransactionResponseMapper
-			 * .createTransactionErrorResponseMapper(validationResponse); }
-			 */
+
 		} catch (Exception ex) {
 
 			validationResponse = new com.response.dto.ValidationResponseDto(
@@ -470,47 +370,25 @@ public class CreateTransactionService implements ICreateTransactionService {
 	}
 
 	@Transactional
-	public Long validateCCPin(Long pin) throws JsonProcessingException {
+	public Long validateCCPin(Long pin, Long cid) throws JsonProcessingException {
 		// boolean invalidpinchk = false;
 
 		System.out.println(" PIN from user in validateCCPin method" + pin);
 
-		Long pinfromDB = apgmbbdao.getCustomerByPIN(pin);
+		Long pinfromDB = apgmbbdao.getCustomerByPIN(pin, cid);
 		if (pin.equals(pinfromDB)) {
 			System.out.println("PIN successfully validated from DB==========" + pinfromDB);
-			String url = "http://localhost:8080/SpringHibernateExample/" + "transactioncancel";
 
 			String jsonStrpinvalid = "Pin Validated";
+			paymentInfoMBBDao.saveUserPinStatus(cid, jsonStrpinvalid);
 
-			System.out.println("jsonStrpinvalid----------" + jsonStrpinvalid);
-
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(new MediaType("text", "plain", StandardCharsets.ISO_8859_1));
-
-			// headers.setContentType(MediaType.TEXT_PLAIN);
-			// headers.set(CommonConstants.USER_AGENT_KEY,
-			// CommonConstants.USER_AGENT_VALUE);
-			HttpEntity<String> entity = new HttpEntity<>(jsonStrpinvalid, headers);
-			RestTemplate rest = new RestTemplate();
-			ResponseEntity<String> validationtransResponse = rest.exchange(url, HttpMethod.POST, entity, String.class);
 		} else if (!pin.equals(pinfromDB)) {
 
 			System.out.println("Pin invalid-----------------------" + pinfromDB);
 
-			String url = "http://localhost:8080/SpringHibernateExample/" + "transactioncancel";
-
 			String jsonStrpinInvalid = "Pin invalid and transaction cancelled";
 
-			System.out.println("jsonStrpinInvalid----------" + jsonStrpinInvalid);
-
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(new MediaType("text", "plain", StandardCharsets.ISO_8859_1));
-			// headers.setContentType(MediaType.TEXT_PLAIN);
-			// headers.set(CommonConstants.USER_AGENT_KEY,
-			// CommonConstants.USER_AGENT_VALUE);
-			HttpEntity<String> entity = new HttpEntity<>(jsonStrpinInvalid, headers);
-			RestTemplate rest = new RestTemplate();
-			ResponseEntity<String> validationtransResponse = rest.exchange(url, HttpMethod.POST, entity, String.class);
+			paymentInfoMBBDao.saveUserPinStatus(cid, jsonStrpinInvalid);
 
 		}
 		return pinfromDB;
@@ -589,29 +467,19 @@ public class CreateTransactionService implements ICreateTransactionService {
 		return base64Encoder.encodeToString(randomBytes);
 	}
 
-	public boolean checkDBPinvalidation(boolean transcancel) {
-
-		/*
-		 * RestTemplate restTemplate = new RestTemplate(); String person =
-		 * restTemplate.getForObject(conurl, String.class, 200);
-		 * System.out.println("ID----------=====================: " + person);
-		 */
-		String conurl = "http://localhost:8080/SpringHibernateExample/transactioncancel";
-
-		HttpHeaders headers = new HttpHeaders();
-		// headers.setContentType(MediaType.TEXT_PLAIN); // //
-		headers.setContentType(new MediaType("text", "plain", StandardCharsets.ISO_8859_1));
-
-		HttpEntity<String> entity1 = new HttpEntity<>(headers);
-		RestTemplate rest1 = new RestTemplate();
-		ResponseEntity<String> cancelresp = rest1.exchange(conurl, HttpMethod.POST, entity1, String.class);
-		System.out.println("response from cancel API=======================" + cancelresp.getStatusCode());
+	public String checkDBPinvalidation(boolean transcancel, Long cid) {
+		String output = "";
+		String out = "";
 
 		try {
 
-			URL urlc = new URL("http://localhost:8080/SpringHibernateExample/transactioncancel");
+			String api_host = "http://localhost:8080/SpringHibernateExample/";
+			String commoncont = "transactioncancel/";
+			String url = api_host + commoncont + cid;
+			System.out.println("URL to hit gettransactioncancel" + url);
+			URL urlc = new URL(url);
 			HttpURLConnection conn = (HttpURLConnection) urlc.openConnection();
-			conn.setRequestMethod("POST"); // conn.setRequestProperty("Accept",
+			conn.setRequestMethod("GET"); // conn.setRequestProperty("Accept",
 			// "application/json");
 
 			if (conn.getResponseCode() != 200) {
@@ -620,11 +488,10 @@ public class CreateTransactionService implements ICreateTransactionService {
 
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
-			String output;
 			System.out.println("Output from Server .... \n");
-			while ((output = br.readLine()) != null) {
-				System.out.println(output);
-			}
+			output = br.readLine();
+
+			System.out.println("Output from transaction cancel API==============================" + output);
 			transcancel = true;
 			conn.disconnect();
 
@@ -637,7 +504,12 @@ public class CreateTransactionService implements ICreateTransactionService {
 			e.printStackTrace();
 
 		}
-		return transcancel;
+		return output;
 	}
 
+	@Transactional
+	public String getPinStatusByCid(Long cid) {
+		String status = paymentInfoMBBDao.getPinStatusByCid(cid);
+		return status;
+	}
 }

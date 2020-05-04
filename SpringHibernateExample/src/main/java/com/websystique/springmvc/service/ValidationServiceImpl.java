@@ -16,8 +16,14 @@ public class ValidationServiceImpl implements ValidationService {
 	@Autowired
 	private ApplicationContext appContext;
 
+	public com.response.dto.ValidationResponseDto validateUserPin(String status) {
+
+		return new com.response.dto.ValidationResponseDto(4500, "PIN Validation Failure");
+	}
+
 	@Override
 	public com.response.dto.ValidationResponseDto validateCreateTransaction(
+
 			com.request.dto.CreateTransactionRequestDto createTransactionRequestDto) {
 
 		System.out.println("inside validationservice");
@@ -62,9 +68,10 @@ public class ValidationServiceImpl implements ValidationService {
 	// validateNewNEFTRequest
 	public com.response.dto.ValidationResponseDto validateNewNEFTRequest(NewNEFTRequestDto neftreqdto,
 			TransactionUser valsend, TransactionUser valbene) {
-		
-		System.out.println("sender name from DB--------------------------"+valsend.getCustomername());
-		System.out.println("sender name from user--------------------------"+neftreqdto.getCreateTransactionBody().getBeneficiary_Name());
+
+		System.out.println("sender name from DB--------------------------" + valsend.getCustomername());
+		System.out.println("sender name from user--------------------------"
+				+ neftreqdto.getCreateTransactionBody().getBeneficiary_Name());
 
 		try {
 			if ((neftreqdto.getCreateTransactionBody().getSender_Name() == "")
@@ -78,16 +85,20 @@ public class ValidationServiceImpl implements ValidationService {
 			if (!valsend.getAccount_no().equals(neftreqdto.getCreateTransactionBody().getSender_Accountno())) {
 				return new ValidationResponseDto(112, "Sender Account Number invalid");
 			}
-			if (!valsend.getAccount_type().equals(neftreqdto.getCreateTransactionBody().getSender_Accounttype()) || (neftreqdto.getCreateTransactionBody().getSender_Accounttype() == "")) {
+			if (!valsend.getAccount_type().equals(neftreqdto.getCreateTransactionBody().getSender_Accounttype())
+					|| (neftreqdto.getCreateTransactionBody().getSender_Accounttype() == "")) {
 				return new ValidationResponseDto(103, "Sender Account Type not found or invalid");
 			}
-			if (!valsend.getIfsc().equals(neftreqdto.getCreateTransactionBody().getSender_IFSC())||(neftreqdto.getCreateTransactionBody().getSender_IFSC() == "")) {
+			if (!valsend.getIfsc().equals(neftreqdto.getCreateTransactionBody().getSender_IFSC())
+					|| (neftreqdto.getCreateTransactionBody().getSender_IFSC() == "")) {
 				return new ValidationResponseDto(104, "Sender IFSC not found or invalid");
 			}
-			if (!valbene.getCustomername().equals(neftreqdto.getCreateTransactionBody().getBeneficiary_Name())||(neftreqdto.getCreateTransactionBody().getBeneficiary_Name() == "")) {
+			if (!valbene.getCustomername().equals(neftreqdto.getCreateTransactionBody().getBeneficiary_Name())
+					|| (neftreqdto.getCreateTransactionBody().getBeneficiary_Name() == "")) {
 				return new ValidationResponseDto(105, "Beneficiary Name not found or invalid");
 			}
-			if ((neftreqdto.getCreateTransactionBody().getBeneficiary_Accountno() == 0)||!valbene.getAccount_no().equals(neftreqdto.getCreateTransactionBody().getBeneficiary_Accountno())) {
+			if ((neftreqdto.getCreateTransactionBody().getBeneficiary_Accountno() == 0) || !valbene.getAccount_no()
+					.equals(neftreqdto.getCreateTransactionBody().getBeneficiary_Accountno())) {
 				return new ValidationResponseDto(106, "Beneficiary Account Number invalid or empty");
 			}
 			if ((neftreqdto.getCreateTransactionBody().getBeneficiary_Accounttype() == "")) {

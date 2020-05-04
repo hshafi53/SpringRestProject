@@ -22,6 +22,7 @@ public class NEFTDetails {
 	private String sender_Name;
 	@Column(name = "Sender_Accountno")
 	private Long sender_Accountno;
+
 	public Long getTransactionID() {
 		return transactionID;
 	}

@@ -2,7 +2,6 @@ package com.websystique.springmvc.dao;
 
 import java.sql.SQLException;
 
-import com.websystique.springmvc.model.Login;
 import com.websystique.springmvc.model.User;
 
 public interface UserDao {

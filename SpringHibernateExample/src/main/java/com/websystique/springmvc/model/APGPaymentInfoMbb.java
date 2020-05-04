@@ -1,7 +1,5 @@
 package com.websystique.springmvc.model;
 
-import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +24,17 @@ public class APGPaymentInfoMbb {
 	@Column(name = "MBBRefID")
 	private String mbbRefId;
 
+	@Column(name = "UserPin")
+	private String userpin;
+
+	public String getUserpin() {
+		return userpin;
+	}
+
+	public void setUserpin(String userpin) {
+		this.userpin = userpin;
+	}
+
 	@Column(name = "CCName")
 	private String ccName;
 
@@ -47,7 +56,7 @@ public class APGPaymentInfoMbb {
 
 	@Column(name = "PaymentID")
 	private Long paymentID;
-	
+
 	@Column(name = "PIN")
 	private Long pin;
 
@@ -82,8 +91,7 @@ public class APGPaymentInfoMbb {
 	}
 
 	/**
-	 * @param paymentInfoMBBID
-	 *            the paymentInfoMBBID to set
+	 * @param paymentInfoMBBID the paymentInfoMBBID to set
 	 */
 	public void setPaymentInfoMBBID(Long paymentInfoMBBID) {
 		this.paymentInfoMBBID = paymentInfoMBBID;
@@ -97,8 +105,7 @@ public class APGPaymentInfoMbb {
 	}
 
 	/**
-	 * @param paymentID
-	 *            the paymentID to set
+	 * @param paymentID the paymentID to set
 	 */
 	public void setPaymentID(Long paymentID) {
 		this.paymentID = paymentID;
@@ -166,5 +173,4 @@ public class APGPaymentInfoMbb {
 	 * createdDate; }
 	 */
 
-	
 }

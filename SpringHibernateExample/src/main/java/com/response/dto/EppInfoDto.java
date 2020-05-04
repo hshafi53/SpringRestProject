@@ -5,7 +5,7 @@ public class EppInfoDto {
 	private String installmentPlanCode;
 
 	private String monthTerm;
-	
+
 	private Long channelProviderId;
 
 	public String getInstallmentPlanCode() {

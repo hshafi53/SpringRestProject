@@ -26,8 +26,7 @@ public class BankPaymentPageResponseDto {
 	}
 
 	/**
-	 * @param isValidation
-	 *            the isValidation to set
+	 * @param isValidation the isValidation to set
 	 */
 	public void setIsValidation(Boolean isValidation) {
 		this.isValidation = isValidation;
@@ -41,8 +40,7 @@ public class BankPaymentPageResponseDto {
 	}
 
 	/**
-	 * @param responseCode
-	 *            the responseCode to set
+	 * @param responseCode the responseCode to set
 	 */
 	public void setResponseCode(String responseCode) {
 		this.responseCode = responseCode;
@@ -56,8 +54,7 @@ public class BankPaymentPageResponseDto {
 	}
 
 	/**
-	 * @param responseDesc
-	 *            the responseDesc to set
+	 * @param responseDesc the responseDesc to set
 	 */
 	public void setResponseDesc(String responseDesc) {
 		this.responseDesc = responseDesc;
@@ -71,8 +68,7 @@ public class BankPaymentPageResponseDto {
 	}
 
 	/**
-	 * @param paymentStatus
-	 *            the paymentStatus to set
+	 * @param paymentStatus the paymentStatus to set
 	 */
 	public void setPaymentStatus(String paymentStatus) {
 		this.paymentStatus = paymentStatus;
@@ -86,8 +82,7 @@ public class BankPaymentPageResponseDto {
 	}
 
 	/**
-	 * @param amount
-	 *            the amount to set
+	 * @param amount the amount to set
 	 */
 	public void setAmount(String amount) {
 		this.amount = amount;
@@ -101,8 +96,7 @@ public class BankPaymentPageResponseDto {
 	}
 
 	/**
-	 * @param bankRefNo
-	 *            the bankRefNo to set
+	 * @param bankRefNo the bankRefNo to set
 	 */
 	public void setBankRefNo(String bankRefNo) {
 		this.bankRefNo = bankRefNo;
@@ -116,8 +110,7 @@ public class BankPaymentPageResponseDto {
 	}
 
 	/**
-	 * @param paymentId
-	 *            the paymentId to set
+	 * @param paymentId the paymentId to set
 	 */
 	public void setPaymentId(String paymentId) {
 		this.paymentId = paymentId;
@@ -146,16 +139,14 @@ public class BankPaymentPageResponseDto {
 	}
 
 	/**
-	 * @param paymentDate
-	 *            the paymentDate to set
+	 * @param paymentDate the paymentDate to set
 	 */
 	public void setPaymentDate(String paymentDate) {
 		this.paymentDate = paymentDate;
 	}
 
 	/**
-	 * @param responseURL
-	 *            the responseURL to set
+	 * @param responseURL the responseURL to set
 	 */
 	public void setResponseURL(String responseURL) {
 		this.responseURL = responseURL;

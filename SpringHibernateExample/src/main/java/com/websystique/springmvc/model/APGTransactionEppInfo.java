@@ -29,10 +29,10 @@ public class APGTransactionEppInfo {
 	@Column(name = "MonthTerms")
 	private Integer monthTerms;
 
-	@OneToOne(fetch = FetchType.LAZY)/*( cascade = { CascadeType.ALL })*/
+	@OneToOne(fetch = FetchType.LAZY) /* ( cascade = { CascadeType.ALL }) */
 	@JoinColumn(name = "TransactionID")
 	private Transaction transactionID;
-	
+
 	@Column(name = "ChannelProviderId")
 	private Long channelProviderId;
 

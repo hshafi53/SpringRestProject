@@ -138,11 +138,11 @@ public interface CommonConstants {
 	public static final String EWALLET_CONSUMEBAL_TRANSACTION_ID = "/wrefid";
 	public static final String EWALLET_PAYMENT_DETAILS = "/ewalletpaymentdetails";
 	public static final String EWALLET_PAYMENT_SUCCESS = "/bankResultEwallet";
-	public static final String RESEND_OTP_BY_PUID   = "/resendotpbypuid";
-	public static final String RESEND_OTP_VIA_EMAIL    = "/resendotpviaemail";
+	public static final String RESEND_OTP_BY_PUID = "/resendotpbypuid";
+	public static final String RESEND_OTP_VIA_EMAIL = "/resendotpviaemail";
 	public static final String RESEND_OTP_VIA_EMAIL_COUNTER = "/resendotpviaemailcounter";
 	public static final String VIA = "via";
-	public static final String RESEND_PARAM="resend";
+	public static final String RESEND_PARAM = "resend";
 	public static final String GET_WALLET_INFORMATION = "/getwalletinformation";
 	public static final String GET_GLOBAL_SETTING = "/getglobalsetting";
 	public static final String REVERSE_CONSUME_BALANCE = "/reverseconsumebalance";

@@ -1,5 +1,6 @@
 package com.websystique.springmvc.controller;
 
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,21 +55,29 @@ public class GetTransactionController {
 	}
 
 	@RequestMapping(value = "/getCardDetails/{ccvalue}", method = RequestMethod.GET)
-	public ModelAndView getCardDetails(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("CC Vlaue from transaction api");
+	public ModelAndView getCardDetails(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String spliturl = "http://localhost:8080/SpringHibernateExample/getCardDetails/Mxx12345671";
+		System.out.println("Splited URL" + spliturl.length());
+
+		String getstrcard = spliturl.substring(60, 70);
+		String getstrcustid = spliturl.substring(70, spliturl.length());
+		System.out.println("Splited substring card" + getstrcard);
+		System.out.println("Splited substring cust id" + getstrcustid);
 		ModelAndView mav = new ModelAndView("getCardDetails");
 		mav.addObject("getCardDetails", new APGPaymentInfoMbb());
+
+		mav.addObject("getstrcustid", getstrcustid);
 		return mav;
 	}
 
 	@RequestMapping(value = "/validatepinforCC", method = RequestMethod.POST)
-	// @ResponseBody
-	public ModelAndView validateCards(@RequestParam("pin") Long cardpin) throws JsonProcessingException {
+	public ModelAndView validateCards(@RequestParam("pin") Long cardpin, @RequestParam("customerId") Long cid)
+			throws JsonProcessingException {
 		ModelAndView mav = new ModelAndView("validateCCpin");
 
 		System.out.println("USer pin from page" + cardpin);
 		if (cardpin != null) {
-			Long getpin = createTransactionService.validateCCPin(cardpin);
+			Long getpin = createTransactionService.validateCCPin(cardpin, cid);
 			System.out.println("Pin from DB in validatepinforCC controller==========" + getpin);
 			if (getpin.equals(cardpin)) {
 				mav.addObject("validateCCpin", "Pin Validated");
@@ -84,14 +93,14 @@ public class GetTransactionController {
 
 	}
 
-	@RequestMapping(value = "/transactioncancel", method = RequestMethod.POST, headers = "Accept= text/html")
-	// @ResponseBody
-	public ResponseEntity<List> canceltrans(@RequestBody String requestDto) throws URISyntaxException, Exception {
-		System.out.println("result from validatePin method in transactioncancel API controller======================-"
-				+ requestDto);
-		List result = new ArrayList();
-		result.add(requestDto);
-		System.out.println("List from transaction cancel API====================" + result);
-		return new ResponseEntity<List>(result, HttpStatus.OK);
+	@RequestMapping(value = "/transactioncancel/{id}", method = RequestMethod.GET)
+
+	public ResponseEntity<String> canceltrans(@PathVariable Long id) throws URISyntaxException, Exception {
+		System.out.println(
+				"Customer ID from validateCCpin API in transactioncancel API controller======================-" + id);
+		String finalstatus = createTransactionService.getPinStatusByCid(id);
+		System.out.println("List from transaction cancel API====================" + finalstatus);
+		return new ResponseEntity<String>(finalstatus, HttpStatus.OK);
 	}
+
 }

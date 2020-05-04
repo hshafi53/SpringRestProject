@@ -9,7 +9,8 @@ public class TransactionResponseMapper {
 	}
 
 	public static com.response.dto.CreateTransactionResponseDto transactionResponseMapper(
-			com.response.dto.ValidationResponseDto validationResponse, Long transrefId, Timestamp transtime,String token) {
+			com.response.dto.ValidationResponseDto validationResponse, Long transrefId, Timestamp transtime,
+			String token) {
 
 		String message = "Transaction and payment proccessed";
 
@@ -28,9 +29,9 @@ public class TransactionResponseMapper {
 		return createTransactionResponse;
 
 	}
-	
+
 	public static com.response.dto.CreateTransactionResponseDto transactionNEFTResponseMapper(
-			com.response.dto.ValidationResponseDto validationResponse,Timestamp transtime,Long transrefid) {
+			com.response.dto.ValidationResponseDto validationResponse, Timestamp transtime, Long transrefid) {
 
 		String message = "NEFT proccessed";
 
@@ -42,7 +43,7 @@ public class TransactionResponseMapper {
 		createTransaction.setErrorcode("200");
 		createTransaction.setTransactionid(transrefid);
 		createTransaction.setResultUIMessage(message);
-		System.out.println("time under responsemapper is"+transtime);
+		System.out.println("time under responsemapper is" + transtime);
 		createTransaction.setTimeStamp(new Timestamp(System.currentTimeMillis()));
 
 		createTransactionResponse.setBody(createTransaction);
@@ -68,6 +69,26 @@ public class TransactionResponseMapper {
 		return createTransactionResponse;
 
 	}
+
+	public static com.response.dto.CreateTransactionResponseDto createPINInvalidErrorResponseMapper(
+			com.response.dto.ValidationResponseDto validationResponse) {
+
+		Integer statusCode = validationResponse.getCode();
+		String message = validationResponse.getMessage();
+
+		com.response.dto.CreateTransactionResponseBody createTransaction = new com.response.dto.CreateTransactionResponseBody();
+		com.response.dto.CreateTransactionResponseDto createTransactionResponse = new com.response.dto.CreateTransactionResponseDto();
+
+		// Setting the CreateTransactionBody
+		createTransaction.setResult(false);
+		createTransaction.setErrorcode(statusCode.toString());
+		createTransaction.setResultUIMessage(message);
+		createTransactionResponse.setBody(createTransaction);
+
+		return createTransactionResponse;
+
+	}
+
 	public static com.response.dto.CreateTransactionResponseDto createInvalidErrorResponseMapper(
 			com.response.dto.ValidationResponseDto validationResponse) {
 
@@ -81,7 +102,7 @@ public class TransactionResponseMapper {
 		createTransaction.setResult(false);
 		createTransaction.setErrorcode(statusCode.toString());
 		createTransaction.setResultUIMessage(message);
-		//createTransactionResponse.setBody(createTransaction);
+		// createTransactionResponse.setBody(createTransaction);
 
 		return createTransactionResponse;
 

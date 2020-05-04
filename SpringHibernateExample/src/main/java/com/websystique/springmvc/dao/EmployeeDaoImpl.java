@@ -14,7 +14,8 @@ import com.websystique.springmvc.model.Employee;
 @Repository("employeeDao")
 public class EmployeeDaoImpl extends AbstractDao<Integer, Employee> implements EmployeeDao {
 	@Autowired
-    private SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
+
 	public Employee findById(int id) {
 		return getByKey(id);
 	}
@@ -40,18 +41,18 @@ public class EmployeeDaoImpl extends AbstractDao<Integer, Employee> implements E
 		criteria.add(Restrictions.eq("id", id));
 		return (Employee) criteria.uniqueResult();
 	}
+
 	@Override
-    public Employee updateEmployee(Employee employee) {
-        sessionFactory.getCurrentSession().update(employee);
-        return employee;
-    }
+	public Employee updateEmployee(Employee employee) {
+		sessionFactory.getCurrentSession().update(employee);
+		return employee;
+	}
 
 	public void deleteEmployeeBySsn(int employeeId) {
-        Employee employee = (Employee) sessionFactory.getCurrentSession().load(
-                Employee.class, employeeId);
-        if (null != employee) {
-            this.sessionFactory.getCurrentSession().delete(employee);
-        }
- 
-    }
+		Employee employee = (Employee) sessionFactory.getCurrentSession().load(Employee.class, employeeId);
+		if (null != employee) {
+			this.sessionFactory.getCurrentSession().delete(employee);
+		}
+
+	}
 }

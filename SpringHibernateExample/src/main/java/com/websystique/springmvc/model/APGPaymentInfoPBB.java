@@ -201,6 +201,5 @@ public class APGPaymentInfoPBB {
 	public void setCreatedDate(Timestamp createdDate) {
 		this.createdDate = createdDate;
 	}
-	
-	
+
 }

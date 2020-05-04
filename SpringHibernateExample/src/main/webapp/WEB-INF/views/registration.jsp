@@ -21,7 +21,8 @@
 
 	<h2>Registration Form</h2>
 
-	<form:form method="POST" action="/SpringHibernateExample/update" modelAttribute="edit">
+	<form:form method="POST" action="/SpringHibernateExample/update"
+		modelAttribute="edit">
 		<form:input type="hidden" path="id" id="id" />
 		<table>
 			<tr>
@@ -39,17 +40,14 @@
 
 
 			<tr>
-				<td colspan="3">
-				<input type="submit" value="update" />
-				<%-- <c:choose>
+				<td colspan="3"><input type="submit" value="update" /> <%-- <c:choose>
 						<c:when test="${edit}">
 							<input type="submit" value="update" />
 						</c:when>
 						<c:otherwise>
 							<input type="submit" value="Register" />
 						</c:otherwise>
-					</c:choose> --%>
-					</td>
+					</c:choose> --%></td>
 
 			</tr>
 		</table>

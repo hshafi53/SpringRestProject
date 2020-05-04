@@ -56,8 +56,7 @@ public class APGPaymentInfoCTB {
 	}
 
 	/**
-	 * @param paymentInfoCTBID
-	 *            the paymentInfoCTBID to set
+	 * @param paymentInfoCTBID the paymentInfoCTBID to set
 	 */
 	public void setPaymentInfoCTBID(Long paymentInfoCTBID) {
 		this.paymentInfoCTBID = paymentInfoCTBID;
@@ -71,8 +70,7 @@ public class APGPaymentInfoCTB {
 	}
 
 	/**
-	 * @param citiBankRefID
-	 *            the citiBankRefID to set
+	 * @param citiBankRefID the citiBankRefID to set
 	 */
 	public void setCitiBankRefID(String citiBankRefID) {
 		this.citiBankRefID = citiBankRefID;
@@ -86,8 +84,7 @@ public class APGPaymentInfoCTB {
 	}
 
 	/**
-	 * @param ccName
-	 *            the ccName to set
+	 * @param ccName the ccName to set
 	 */
 	public void setCcName(String ccName) {
 		this.ccName = ccName;
@@ -101,8 +98,7 @@ public class APGPaymentInfoCTB {
 	}
 
 	/**
-	 * @param ccDataKey
-	 *            the ccDataKey to set
+	 * @param ccDataKey the ccDataKey to set
 	 */
 	public void setCcDataKey(String ccDataKey) {
 		this.ccDataKey = ccDataKey;
@@ -116,8 +112,7 @@ public class APGPaymentInfoCTB {
 	}
 
 	/**
-	 * @param ccDisplay
-	 *            the ccDisplay to set
+	 * @param ccDisplay the ccDisplay to set
 	 */
 	public void setCcDisplay(String ccDisplay) {
 		this.ccDisplay = ccDisplay;
@@ -131,8 +126,7 @@ public class APGPaymentInfoCTB {
 	}
 
 	/**
-	 * @param expiryMonth
-	 *            the expiryMonth to set
+	 * @param expiryMonth the expiryMonth to set
 	 */
 	public void setExpiryMonth(String expiryMonth) {
 		this.expiryMonth = expiryMonth;
@@ -146,8 +140,7 @@ public class APGPaymentInfoCTB {
 	}
 
 	/**
-	 * @param expiryYear
-	 *            the expiryYear to set
+	 * @param expiryYear the expiryYear to set
 	 */
 	public void setExpiryYear(String expiryYear) {
 		this.expiryYear = expiryYear;
@@ -161,8 +154,7 @@ public class APGPaymentInfoCTB {
 	}
 
 	/**
-	 * @param submitInfo
-	 *            the submitInfo to set
+	 * @param submitInfo the submitInfo to set
 	 */
 	public void setSubmitInfo(String submitInfo) {
 		this.submitInfo = submitInfo;
@@ -176,8 +168,7 @@ public class APGPaymentInfoCTB {
 	}
 
 	/**
-	 * @param ccType
-	 *            the ccType to set
+	 * @param ccType the ccType to set
 	 */
 	public void setCcType(String ccType) {
 		this.ccType = ccType;
@@ -191,8 +182,7 @@ public class APGPaymentInfoCTB {
 	}
 
 	/**
-	 * @param paymentID
-	 *            the paymentID to set
+	 * @param paymentID the paymentID to set
 	 */
 	public void setPaymentID(Long paymentID) {
 		this.paymentID = paymentID;

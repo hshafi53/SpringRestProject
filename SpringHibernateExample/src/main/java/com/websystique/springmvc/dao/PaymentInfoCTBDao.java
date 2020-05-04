@@ -1,7 +1,8 @@
 package com.websystique.springmvc.dao;
-import com.websystique.springmvc.model.*;
+
 import java.util.List;
 
+import com.websystique.springmvc.model.APGPaymentInfoCTB;
 
 public interface PaymentInfoCTBDao {
 

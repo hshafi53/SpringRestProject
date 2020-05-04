@@ -7,8 +7,11 @@ public interface ValidationService {
 
 	public com.response.dto.ValidationResponseDto validateCreateTransaction(
 			com.request.dto.CreateTransactionRequestDto createTransactionRequestDto);
-	
-	public com.response.dto.ValidationResponseDto validateNewNEFTRequest(NewNEFTRequestDto neftreqdto,TransactionUser valsender,TransactionUser valbene) ;
 
+	// validateUserPin(getfinalstatus);
+	public com.response.dto.ValidationResponseDto validateUserPin(String status);
+
+	public com.response.dto.ValidationResponseDto validateNewNEFTRequest(NewNEFTRequestDto neftreqdto,
+			TransactionUser valsender, TransactionUser valbene);
 
 }

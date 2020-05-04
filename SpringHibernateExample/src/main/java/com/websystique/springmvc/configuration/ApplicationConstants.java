@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 /**
  * @author USer
  *
@@ -200,7 +199,7 @@ public class ApplicationConstants {
 	public static final String FPX_DIRECT = "fpx.direct";
 
 	public static final String Ewallet = "apg.wallet";
-	
+
 	public static final String MBB_RESPONSE_TYPE = "xml";
 
 	public static final String MBB_TRANS_TYPE_REF = "7";

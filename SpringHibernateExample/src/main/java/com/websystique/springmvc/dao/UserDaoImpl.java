@@ -10,7 +10,6 @@ import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.websystique.springmvc.model.Login;
@@ -46,7 +45,7 @@ public class UserDaoImpl extends AbstractDao<Integer, Login> implements UserDao 
 	public String register(User user) throws SQLException {
 		String msg = "";
 		Connection con = null;
-		if (user.getUsername()!=null && user.getPassword()!=null && user.getPhone()!=0) {
+		if (user.getUsername() != null && user.getPassword() != null && user.getPhone() != 0) {
 			try {
 				if ((con == null) || (con.isClosed())) {
 					con = getConnection();
@@ -153,8 +152,7 @@ public class UserDaoImpl extends AbstractDao<Integer, Login> implements UserDao 
 
 		try {
 
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/SpringREST",
-					"root", "hussain");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/SpringREST", "root", "hussain");
 			System.out.println("database connected!");
 		} catch (SQLException e) {
 

@@ -29,20 +29,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 * update explicitly. Just fetch the entity from db and update it with proper
 	 * values within transaction. It will be updated in db once transaction ends.
 	 */
-	/*public void updateEmployee(Employee employee) {
-		System.out.println("inside updateEmployee---------");
-		Employee entity = dao.findById(employee.getId());
-		System.out.println("entity value---------"+entity);
-		if (entity != null) {
-			entity.setName(employee.getName());
-			entity.setAmount(employee.getAmount());
-			System.out.println("Name"+employee.getName());
-		}
-	}*/
+	/*
+	 * public void updateEmployee(Employee employee) {
+	 * System.out.println("inside updateEmployee---------"); Employee entity =
+	 * dao.findById(employee.getId());
+	 * System.out.println("entity value---------"+entity); if (entity != null) {
+	 * entity.setName(employee.getName()); entity.setAmount(employee.getAmount());
+	 * System.out.println("Name"+employee.getName()); } }
+	 */
 	public Employee updateEmployee(Employee employee) {
-        // TODO Auto-generated method stub
-        return dao.updateEmployee(employee);
-    }
+		// TODO Auto-generated method stub
+		return dao.updateEmployee(employee);
+	}
 
 	public void deleteEmployeeBySsn(int id) {
 		dao.deleteEmployeeBySsn(id);

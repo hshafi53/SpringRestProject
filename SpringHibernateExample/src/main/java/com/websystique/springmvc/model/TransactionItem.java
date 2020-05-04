@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Configurable;
@@ -30,7 +28,6 @@ public class TransactionItem {
 	@Column(name = "UnitPrice")
 	private Long unitPrice;
 
-	
 	private Long transactionid;
 
 	public Long getTransactionid() {
@@ -102,8 +99,6 @@ public class TransactionItem {
 	/**
 	 * @return the sortOrder
 	 */
-
-	
 
 	@Override
 	public String toString() {
